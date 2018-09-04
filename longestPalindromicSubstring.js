@@ -22,21 +22,15 @@ var longestPalindrome = function(s) {
             dp[i][j] = true;
         }
     }
-
     let ret = s[0];
-    console.log(dp);
     for (let i = 0; i < len - 1; i++) {
-        console.log(`dp[${i}][${i+1}] = (${s[i] === s[i+1]})`);
         dp[i][i + 1] = (s[i] === s[i + 1]);
         if (dp[i][i + 1]) ret = s.slice(i, i + 2);
     }
-
-    console.log(dp);
     for (let k = 2; k < len; k++) {
         for (let i = 0, j = k; j < len; i++, j++) {
             dp[i][j] = (dp[i + 1][j - 1] && s[i] === s[j]);
             if (dp[i][j] && j - i + 1 > ret.length) {
-                console.log(`i:${i} j:${j}`);
                 ret = s.slice(i, j + 1);
             }
         }
