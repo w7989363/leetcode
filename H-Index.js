@@ -10,7 +10,8 @@
  */
 var hIndex = function(citations) {
   const N = citations.length
-  let bucket = Array.from({length: N+1}).map(n => 0)
+  let bucket = Array.from({length: N+1}).fill(0)
+  // let bucket = Array.from({length: N+1}).map(n => 0)
   citations.forEach(n => {
     bucket[Math.min(n, N)]++
   })
