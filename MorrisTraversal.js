@@ -82,14 +82,14 @@ function preorder(root) {
 function reverse(from, to) {
   if (from === to) return
   let head = from, nextHead = head.right, temp
-  // 先把 to.right 给 from.right，否则会丢失
-  head.right = to.right
   while (head !== to) {
     temp = nextHead.right
     nextHead.right = head
     head = nextHead
     nextHead = temp
   }
+  // 反转后尾部会形成一个小环，将尾部.right赋值为空
+  from.right = null;
 }
 
 function printReverse(from, to) {
